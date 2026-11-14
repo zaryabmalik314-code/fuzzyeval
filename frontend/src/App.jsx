@@ -13,22 +13,22 @@ const CRITERIA = [
 const LABELS = { 1: "Very Poor", 2: "Poor", 3: "Fair", 4: "Good", 5: "Very Good" };
 
 const GROQ_MODELS = [
-  { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B" },
-  { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B" },
-  { id: "mixtral-8x7b-32768", name: "Mixtral 8x7B" },
-  { id: "gemma2-9b-it", name: "Gemma 2 9B" },
+  { id: "openai/gpt-oss-120b", name: "GPT-OSS 120B" },
+  { id: "openai/gpt-oss-20b", name: "GPT-OSS 20B" },
+  { id: "qwen/qwen3.6-27b", name: "Qwen 3.6 27B" },
 ];
 
 const GEMINI_MODELS = [
-  { id: "gemini-2.0-flash", name: "Gemini 2.0 Flash" },
+  { id: "gemini-3.8-flash", name: "Gemini 3.8 Flash" },
+  { id: "gemini-3.6-flash", name: "Gemini 3.6 Flash" },
   { id: "gemini-2.5-flash", name: "Gemini 2.5 Flash" },
 ];
 
 function App() {
   const [groqKey, setGroqKey] = useState(() => localStorage.getItem("groq_key") || "");
   const [geminiKey, setGeminiKey] = useState(() => localStorage.getItem("gemini_key") || "");
-  const [groqModel, setGroqModel] = useState("llama-3.3-70b-versatile");
-  const [geminiModel, setGeminiModel] = useState("gemini-2.0-flash");
+  const [groqModel, setGroqModel] = useState("openai/gpt-oss-120b");
+  const [geminiModel, setGeminiModel] = useState("gemini-3.8-flash");
 
   const [step, setStep] = useState("input");
   const [prompt, setPrompt] = useState("");

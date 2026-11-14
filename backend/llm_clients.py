@@ -17,7 +17,7 @@ class LLMResponse:
     error: str | None = None
 
 
-async def query_groq(prompt: str, api_key: str, model: str = "llama-3.3-70b-versatile") -> LLMResponse:
+async def query_groq(prompt: str, api_key: str, model: str = "openai/gpt-oss-120b") -> LLMResponse:
     """Send prompt to Groq API (OpenAI-compatible)."""
     try:
         async with httpx.AsyncClient(timeout=60.0) as client:
@@ -53,7 +53,7 @@ async def query_groq(prompt: str, api_key: str, model: str = "llama-3.3-70b-vers
         )
 
 
-async def query_gemini(prompt: str, api_key: str, model: str = "gemini-2.0-flash") -> LLMResponse:
+async def query_gemini(prompt: str, api_key: str, model: str = "gemini-3.8-flash") -> LLMResponse:
     """Send prompt to Google Gemini API."""
     try:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
@@ -93,8 +93,8 @@ async def query_both(
     prompt: str,
     groq_key: str,
     gemini_key: str,
-    groq_model: str = "llama-3.3-70b-versatile",
-    gemini_model: str = "gemini-2.0-flash",
+    groq_model: str = "openai/gpt-oss-120b",
+    gemini_model: str = "gemini-3.8-flash",
 ) -> list[LLMResponse]:
     """Query both LLMs in parallel."""
     results = await asyncio.gather(

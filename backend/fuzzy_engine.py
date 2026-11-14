@@ -185,6 +185,14 @@ def _generate_explanation(
     ratings: dict[str, list[int]],
 ) -> dict:
     """Generate human-readable explanation of the ranking."""
+    if not ranking:
+        return {
+            "summary": "No models to rank.",
+            "winner": None,
+            "criterion_breakdown": [],
+            "separability": None,
+            "top_drivers": [],
+        }
     best = ranking[0]
     best_cc = results[best]["cc"]
 
